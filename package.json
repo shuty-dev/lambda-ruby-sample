@@ -1,0 +1,10 @@
+{
+  "description": "sam execute",
+  "scripts": {
+    "build": "sam build",
+    "hw:rt32": "sam local invoke HelloWorldRT32Function",
+    "hw:rt33": "sam local invoke HelloWorldRT33Function",
+    "hw:rt32:yjit": "sam local invoke HelloWorldRT32YJITFunction",
+    "hw:rt33:yjit": "sam local invoke HelloWorldRT33YJITFunction"
+  }
+}

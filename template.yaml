@@ -1,0 +1,50 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  lambda-ruby-sample
+
+  Sample SAM Template for lambda-ruby-sample
+
+Globals:
+  Function:
+    Description: sample lambda
+    Handler: app.lambda_handler
+    Runtime: ruby3.3
+    Timeout: 3
+    MemorySize: 512
+    CodeUri: functions/hello_world/
+    Architectures:
+      - x86_64
+
+Resources:
+  HelloWorldRT32Function:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: "hello-world-runtime3-2"
+      Description: "Ruby3.2・YJITなし"
+      Runtime: ruby3.2
+
+  HelloWorldRT33Function:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: "hello-world-runtime3-3"
+      Description: "Ruby3.3・YJITなし"
+
+  HelloWorldRT32YJITFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: "hello-world-runtime3-2-and-yjit"
+      Description: "Ruby3.2・YJITを有効化"
+      Runtime: ruby3.2
+      Environment:
+        Variables:
+          RUBY_YJIT_ENABLE: "1"
+
+  HelloWorldRT33YJITFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: "hello-world-runtime3-3-and-yjit"
+      Description: "Ruby3.3・YJITを有効化"
+      Environment:
+        Variables:
+          RUBY_YJIT_ENABLE: "1"
